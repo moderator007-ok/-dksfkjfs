@@ -1,3 +1,4 @@
+
 from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 import requests
 import json
@@ -18,7 +19,6 @@ from logger import logging
 import time
 import asyncio
 from pyrogram.types import User, Message
-from config import *
 import sys
 import os
 import random
@@ -30,14 +30,14 @@ import datetime
 import aiohttp
 
 bot = Client("bot",
-             bot_token="7594440755:AAHtdnGt9YWGfp4RKynABmAdhoKEGI1ViH8", 
+             bot_token= "7836714507:AAE0uMDhthtcFEPoO96xxUxXmeyW6Obz5tU", 
              #bot_token= os.environ.get("BOT_TOKEN"),
-             api_id=29554659,
-             api_hash="7257d3b3192355ae71ada27cfdc3837c")
-auth_users = [7521176146]
+             api_id= 23031620,
+             api_hash= "31cb00c1cbe580394778b43105864bca")
+auth_users = [2052075731]
 #romeo  
 
-owner_id = 7521176146
+owner_id = 2052075731
 # Extras 
 failed_links = []  # List to store failed links
 fail_cap =f"**➜ This file Contain Failed Downloads while Downloding \n You Can Retry them one more time **"
@@ -382,159 +382,114 @@ async def account_login(bot: Client, m: Message):
     else:
         thumb == "no"
 
-    if len(links) == 1:
-        count = 1
-    else:
-        count = int(raw_text)
-  
+    if len(links) == 1:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+         count = 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    else:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+         count = int(raw_text)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
     try:
-        for i in range(count - 1, int(input9.text)):
-        #for i in range(count - 1, len(links)):    
+         for i in range(count - 1, len(links)):
 
-            V = links[i][1].replace("file/d/","uc?export=download&id=")\
-               .replace("www.youtube-nocookie.com/embed", "youtu.be")\
-               .replace("?modestbranding=1", "")\
-               .replace("/view?usp=sharing","")\
-               .replace("youtube.com/embed/", "youtube.com/watch?v=")
+             V = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","")  .replace("mpd","m3u8")
+             url = "https://" + V
+             if "visionias" in url:
+                 async with ClientSession() as session:
+                     async with session.get(url, headers={
+                     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9', 
+                     'Accept-Language': 'en-US,en;q=0.9',
+                     'Cache-Control': 'no-cache',
+                     'Connection': 'keep-alive',
+                     'Pragma': 'no-cache',
+                     'Referer': 'http://www.visionias.in/',
+                     'Sec-Fetch-Dest': 'iframe',
+                     'Sec-Fetch-Mode': 'navigate',
+                     'Sec-Fetch-Site': 'cross-site',
+                     'Upgrade-Insecure-Requests': '1',
+                     'User-Agent': 'Mozilla/5.0 (Linux; Android 12; RMX2121) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36',
+                     'sec-ch-ua': '"Chromium";v="107", "Not=A?Brand";v="24"',
+                     'sec-ch-ua-mobile': '?1',
+                     'sec-ch-ua-platform': '"Android"',}) as resp:
+                         text = await resp.text()
+                         url = re.search(r"(https://.*?playlist.m3u8.*?)\"", text).group(1)
+                      
+             elif 'videos.classplusapp' in url:
+                 url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': token, }).json()['url']
+              
+             elif 'tencdn' in url:
+                 url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': token, }).json()['url']
+              
+             elif 'tencdn' in url:
+                 id =  url.split("/")[-2]
+                 url =  "https://extractapi.vercel.app/classplus?link=https://tencdn.classplusapp.com/" + id + "/master.m3u8"
+              
+             elif "brightcove" in url:
+                 Master = url.split("?")
+                 src_url = Master[0].replace("/master.m3u8", "")
+                 src_auth = Master[1].split("=")[1]
+                 url = await master.generate_master_url(src_url, src_auth)
+              
+             elif 'testbook' in url:
+                 id =  url.split("/")[-2]
+                 url =  "https://extractapi.vercel.app/classplus?link=https://cpvod.testbook.com/" + id + "/playlist.m3u8"
 
-            url = "https://" + V
-
-            if "acecwply" in url:
-                cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
-
-            elif "visionias" in url:
-                async with ClientSession() as session:
-                    async with session.get(url, headers={'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9', 'Accept-Language': 'en-US,en;q=0.9', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Referer': 'http://www.visionias.in/', 'Sec-Fetch-Dest': 'iframe', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Site': 'cross-site', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Linux; Android 12; RMX2121) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36', 'sec-ch-ua': '"Chromium";v="107", "Not=A?Brand";v="24"', 'sec-ch-ua-mobile': '?1', 'sec-ch-ua-platform': '"Android"',}) as resp:
-                        text = await resp.text()
-                        url = re.search(r"(https://.*?playlist.m3u8.*?)\"", text).group(1)
-
-            elif 'videos.classplusapp' in url:
-             url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': 'eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgzNjkyMTIsIm9yZ0lkIjoyNjA1LCJ0eXBlIjoxLCJtb2JpbGUiOiI5MTcwODI3NzQyODkiLCJuYW1lIjoiQWNlIiwiZW1haWwiOm51bGwsImlzRmlyc3RMb2dpbiI6dHJ1ZSwiZGVmYXVsdExhbmd1YWdlIjpudWxsLCJjb3VudHJ5Q29kZSI6IklOIiwiaXNJbnRlcm5hdGlvbmFsIjowLCJpYXQiOjE2NDMyODE4NzcsImV4cCI6MTY0Mzg4NjY3N30.hM33P2ai6ivdzxPPfm01LAd4JWv-vnrSxGXqvCirCSpUfhhofpeqyeHPxtstXwe0'}).json()['url']
-
-
-            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip() 
-            name = f'{name1[:60]}'
-
-            if "/master.mpd" in url :
-                if "https://sec1.pw.live/" in url:
-                    url = url.replace("https://sec1.pw.live/","https://d1d34p8vz63oiq.cloudfront.net/")
-                    print(url)
-                
-            if "/master.mpd" in url:
-                cmd= f" yt-dlp -k --allow-unplayable-formats -f bestvideo.{quality} --fixup never {url} "
-                print("counted")
-            if "youtu" in url:
-                ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
-            else:
-                ytf = f"bestvideo.{quality}"
-
-            if "jw-prod" in url:
-                cmd = f'yt-dlp -o "{name}.mp4" "{url}"'
-            else:
-                cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
-
-            if "m3u8" or "livestream" in url:
-                cmd = f'yt-dlp -f "{ytf}" --no-keep-video --remux-video mkv "{url}" -o "romeo.mp4"'
-                #cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.%(ext)s"'
-            else: 
-                cmd = f'yt-dlp -f "{ytf}" --no-keep-video --remux-video mkv "{url}" -o "romeo.mp4"'
-                print("counted 2 ")
+             elif 'cpvod.testbook' in url:
+                 id =  url.split("/")[-2]
+                 url =  "https://extractapi.vercel.app/classplus?link=https://cpvod.testbook.com/" + id + "/playlist.m3u8"   
+                           
+             elif '/master.mpd' in url:
+                 id =  url.split("/")[-2]
+                 url =  "https://pedablu.jarviss.workers.dev?v=https://d1d34p8vz63oiq.cloudfront.net/" + id + "/master.m3u8"
             
-            # else
-            #     cmd = f'yt-dlp -f "{ytf}+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
+             elif '/master.mpd' in url:
+                 id =  url.split("/")[-2]
+                 url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
+          
+             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
+             name = f'{str(count).zfill(3)}) {name1[:60]}'
 
-            try:   
+          
+             if "youtu" in url:
+                 ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
+             else:
+                 ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba"
+
+             if "acecwply" in url:
+                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
+        
+             elif "jw-prod" in url:
+                 cmd = f'yt-dlp -o "{name}.mp4" "{url}"'
+             else:
+                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
+   
+             if "embed" in url:
+                 ytf = f"bestvideo[height<={raw_text2}]+bestaudio/best[height<={raw_text2}]"
+             elif "youtube" in url:
+                 ytf = f"bestvideo[height<={raw_text2}][ext=mp4]+bestaudio[ext=m4a]/best[height<={raw_text2}][ext=mp4]"
+             else:
+                 ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba" 
+             if "embed" in url:
+                 ytf = f"bestvideo[height<={raw_text2}]+bestaudio/best[height<={raw_text2}]"
+             elif "youtube" in url:
+                 ytf = f"bestvideo[height<={raw_text2}][ext=mp4]+bestaudio[ext=m4a]/best[height<={raw_text2}][ext=mp4]"
+             else:
+                 ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba"
+             if "player.vimeo" in url:
+                 cmd = f'yt-dlp -f "{ytf}+bestaudio" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
+         
+             elif url.startswith("https://apni-kaksha.vercel.app"):
+                 cmd = f'yt-dlp -f "{ytf}+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
+         
+             elif "m3u8" or "livestream" in url:
+                 cmd = f'yt-dlp -f "{ytf}" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
+         
+             elif ytf == "0" or "unknown" in out:
+                 cmd = f'yt-dlp -f "{ytf}" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
+         
+             elif ".pdf" or "download" in str(url):
+                 cmd = "pdf"
+             else:
+                 cmd = f'yt-dlp -f "{ytf}+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
+             try:             
                 cc = f' **➭ Index » {str(count).zfill(3)} **\n**➭ Title »  {name1}.mkv**\n**➭ 𝐁𝐚𝐭𝐜𝐡 » {b_name} **\n**➭ Quality » {raw_text2}**\n\n✨ **𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 : {CR}**\n**━━━━━━━✦✗✦━━━━━━━**'
                 cc1 = f'**➭ Index » {str(count).zfill(3)} **\n**➭ Title » {name1}.pdf** \n**➭ 𝐁𝐚𝐭𝐜𝐡 »  {b_name}**\n\n✨ **𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 : {CR}**\n**━━━━━━━✦✗✦━━━━━━━**'                            
-               
-                if "drive" in url:
-                    try:
-                        ka = await helper.download(url, name)
-                        copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
-                        await copy.copy(chat_id = -1002182906877)
-                        count+=1
-                        os.remove(ka)
-                        time.sleep(1)
-                    except FloodWait as e: 
-                        await m.reply_text(str(e))
-                        time.sleep(e.x)
-                        continue
-                elif ".pdf" in url:
-                    try:
-                        time.sleep(1)
-                        #prog = await m.reply_text(f"📥 **Downloading **\n\n**➭ Index » {str(count).zfill(3)} **\n**➭ File » ** `{name}`\n**➭ Link »** `{url}`\n\n✨ **Bot Made by Devansh**\n**━━━━━━━✦✗✦━━━━━━━**")
-                        cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
-                        download_cmd = f"{cmd} -R 25 --fragment-retries 25"
-                        os.system(download_cmd)
-                        time.sleep(1)
-                        #await prog.delete (True)
-                        start_time = time.time()
-                        reply = await m.reply_text(f"**⚡️ Starting Uploding ...** - `{name}`")
-                        time.sleep(1)
-                        if raw_text7 == "custom" :
-                           subprocess.run(['wget', thumb3, '-O', 'pdfthumb.jpg'], check=True)  
-                           thumbnail = "pdfthumb.jpg"
-                           copy = await bot.send_document(chat_id=m.chat.id, document=f'{name}.pdf', caption=cc1, thumb=thumbnail, progress=progress_bar, progress_args=(reply, start_time))
-                           os.remove(thumbnail)
-                        elif thumb == "no" and raw_text7 == "no":
-                        
-                             copy = await bot.send_document(chat_id=m.chat.id, document=f'{name}.pdf', caption=cc1, progress=progress_bar, progress_args=(reply, start_time))
-                        elif raw_text7 == "yes" and thumb != "no":
-                              subprocess.run(['wget', thumb2, '-O', 'thumb1.jpg'], check=True)  # Fixing this line
-                              thumbnail = "thumb1.jpg"
-                              copy = await bot.send_document(chat_id=m.chat.id, document=f'{name}.pdf', caption=cc1,thumb=thumbnail, progress=progress_bar, progress_args=(reply, start_time))
-                        else:
-                            subprocess.run(['wget', thumb2, '-O', 'thumb1.jpg'], check=True)  
-                            thumbnail = "thumb1.jpg"
-                            copy = await bot.send_document(chat_id=m.chat.id, document=f'{name}.pdf', caption=cc1, thumb=thumbnail, progress=progress_bar, progress_args=(reply, start_time))
-                        await reply.delete (True)
-                        os.remove(f'{name}.pdf')
-                        count += 1
-                        time.sleep(2)
-                    except FloodWait as e:
-                        #await m.reply_text(str(e))
-                        time.sleep(e.x)
-                        continue
-
-                else:
-                    prog = await m.reply_text(f"📥 **Downloading **\n\n**➭ Count » {str(count).zfill(3)} **\n**➭ Video Name » ** `{name}`\n**➭ Quality** » `{raw_text2}`\n**➭ Video Url »** `{url}`\n**➭ Thumbnail »** `{input6.text}` \n\n✨ **Bot Made by @EX_DOLPHIN**\n**━━━━━━━✦✗✦━━━━━━━**")
-                    time.sleep(2)
-                    res_file = await helper.drm_download_video(url,quality, name,key)
-                    filename = res_file
-                    await prog.delete(True)
-                    time.sleep(1)
-                    await helper.send_vid(bot, m, cc, filename, thumb, name, thumb2)
-                    count += 1
-                    
-
-            except Exception as e:
-                await m.reply_text(f"**This #Failed File is not Counted**\n**Name** =>> `{name1}`\n**Link** =>> `{url}`\n\n ** Fail reason »** {e}")
-                failed_links.append(f"{name1} : {url}")
-                count += 1
-                continue
-
-    except Exception as e:
-        await m.reply_text(e)
-    time.sleep(2)
-
-
-    if failed_links:
-     error_file_send = await m.reply_text("**📤 Sending you Failed Downloads List **")
-     with open("failed_downloads.txt", "w") as f:
-        for link in failed_links:
-            f.write(link + "\n")
-    # After writing to the file, send it
-     await m.reply_document(document="failed_downloads.txt", caption=fail_cap)
-     await error_file_send.delete()
-     failed_links.clear()
-     os.remove(f'failed_downloads.txt')
-    await m.reply_text("🔰Done🔰")
-    await m.reply_text("**✨Thanks for Choosing**")
-    processing_request = False  # Reset the processing flag  
-
-
-
-    
-  
-processing_request = False  
-bot.run()
+        
